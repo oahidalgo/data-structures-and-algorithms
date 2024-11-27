@@ -1,0 +1,49 @@
+inicializacion constructor
+this.tail = this.head;
+001 <- this.head
+    <- this.tail      =   {
+                            value: 10
+                            next: null
+                          }
+
+primera ejecucion
+this.tail.next = node;
+002 <- node            =  { 5, null }
+    <- this.tail.next  =  tail {
+                            value: 10
+                            next: {
+                              value: 5
+                              next: null
+                            }
+                          }
+    <- this.head.next =  head {
+                            value: 10
+                            next: {
+                              value: 5
+                              next: null
+                            }
+                          }
+    <- this.tail      =  { 5, null }
+
+segunda ejecucion
+003 <- node            =  {16, null}
+    <- this.tail.next  =  tail {
+                            value: 5
+                            next: {
+                              value: 16
+                              next: null
+                            }
+                          }
+    Esto es lo que entiendo, ahora el tail.next apunta a la misma direccion que  head.next.next
+    Como es que sucede esto
+    <- this.head.next.next  =  head {
+                                    value: 10
+                                    next: {
+                                      value: 5
+                                      next: {
+                                        value: 16
+                                        next: null
+                                      }
+                                    }
+                                  }
+    <- this.tail      =  {16, null}
