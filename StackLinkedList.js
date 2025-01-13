@@ -13,7 +13,7 @@ class Stack {
   }
 
   peek() {
-    return this.top.value;
+    return this.top;
   }
 
   push(value) {
