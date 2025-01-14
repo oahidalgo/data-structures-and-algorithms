@@ -6,10 +6,11 @@
 //For example: fibonacciRecursive(6) should return 8
 
 function fibonacciIterative(n) {
+  // O(n)
   let fibonacci = 0;
   let f1 = 0,
     f2 = 1;
-  if (n <= 0) return fibonacci;
+  if (n < 2) return n;
   for (let i = 1; i < n; i++) {
     fibonacci = f1 + f2;
     f1 = f2;
@@ -19,6 +20,10 @@ function fibonacciIterative(n) {
   return fibonacci;
 }
 
-function fibonacciRecursive(n) {}
+function fibonacciRecursive(n) {
+  //O(2^n) slower
+  if (n < 2) return n;
+  return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+}
 
-console.log(fibonacciIterative(8));
+console.log(fibonacciRecursive(10), fibonacciIterative(10));
