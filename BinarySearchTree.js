@@ -114,6 +114,41 @@ class BinarySearchTree {
       }
     }
   }
+
+  breadthFirstSearch() {
+    let currentNode = this.root;
+    let list = [];
+    let queue = [];
+    queue.push(currentNode);
+
+    while (queue.length > 0) {
+      currentNode = queue.shift();
+      list.push(currentNode.value);
+      if (currentNode.left) {
+        queue.push(currentNode.left);
+      }
+      if (currentNode.right) {
+        queue.push(currentNode.right);
+      }
+    }
+    return list;
+  }
+  breadthFirstSearchR(queue, list) {
+    if (!queue.length) {
+      return list;
+    }
+    const currentNode = queue.shift();
+    list.push(currentNode.value);
+
+    if (currentNode.left) {
+      queue.push(currentNode.left);
+    }
+    if (currentNode.right) {
+      queue.push(currentNode.right);
+    }
+
+    return this.breadthFirstSearchR(queue, list);
+  }
 }
 
 // Helper function to visualize the tree
@@ -134,9 +169,12 @@ tree.insert(170);
 tree.insert(15);
 tree.insert(1);
 
+console.log('BFS', tree.breadthFirstSearch());
+console.log('BFS', tree.breadthFirstSearchR([tree.root], []));
+
 // Remove a value
-tree.remove(4);
-console.log(JSON.stringify(traverse(tree.root), null, 2));
+//tree.remove(4);
+//console.log(JSON.stringify(traverse(tree.root), null, 2));
 
 // Test lookup and verify the tree structure
-console.log(tree.lookup(20));
+//console.log(tree.lookup(20));
